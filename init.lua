@@ -103,6 +103,15 @@ vim.o.expandtab = true -- expand tab input with spaces characters
 vim.o.smartindent = true -- syntax aware indentations for newline inserts
 vim.o.tabstop = 2 -- num of space characters per tab
 vim.o.shiftwidth = 2 -- spaces per indentation level
+-- force indentation
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = { '*' },
+  command = 'setlocal tabstop=2 shiftwidth=2',
+})
+vim.api.nvim_create_autocmd('BufNewFile', {
+  pattern = { '*' },
+  command = 'setlocal tabstop=2 shiftwidth=2',
+})
 
 -- Make line numbers default
 vim.o.number = true
