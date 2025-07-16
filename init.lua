@@ -98,12 +98,11 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
--- Config tabs as spaces
-vim.o.expandtab = true -- expand tab input with spaces characters
-vim.o.smartindent = true -- syntax aware indentations for newline inserts
-vim.o.tabstop = 2 -- num of space characters per tab
-vim.o.shiftwidth = 2 -- spaces per indentation level
--- force indentation
+-- Force 2 spaces as identation
+vim.o.tabstop = 2 -- Insert 4 spaces for a tab
+vim.o.shiftwidth = 2 -- Change the number of space characters inserted for indentation
+vim.o.expandtab = true -- Converts tabs to spaces
+
 vim.api.nvim_create_autocmd('BufEnter', {
   pattern = { '*' },
   command = 'setlocal tabstop=2 shiftwidth=2',
@@ -233,16 +232,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
-
--- [[ Enable custom config files ]]
-for name, type in vim.fs.dir(vim.fn.stdpath 'config' .. '/lua/custom/config') do
-  local name_only = name
-  local dot = string.find(name, '%.')
-  if dot ~= nil then
-    name_only = string.sub(name, 0, dot - 1)
-  end
-  require('custom.config.' .. name_only)
-end
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
