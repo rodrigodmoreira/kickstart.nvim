@@ -105,11 +105,11 @@ vim.o.expandtab = true -- Converts tabs to spaces
 
 vim.api.nvim_create_autocmd('BufEnter', {
   pattern = { '*' },
-  command = 'setlocal tabstop=2 shiftwidth=2',
+  command = 'setlocal tabstop=2 shiftwidth=2 expandtab',
 })
 vim.api.nvim_create_autocmd('BufNewFile', {
   pattern = { '*' },
-  command = 'setlocal tabstop=2 shiftwidth=2',
+  command = 'setlocal tabstop=2 shiftwidth=2 expandtab',
 })
 
 -- Make line numbers default
