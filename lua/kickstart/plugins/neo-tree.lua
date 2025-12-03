@@ -23,7 +23,7 @@ return {
         visible = false,
         hide_dotfiles = false,
         hide_gitignored = false,
-        hide_by_name = { '.git' },
+        hide_by_name = { '.git', '__pycache__' },
         never_show = {},
       },
       window = {
