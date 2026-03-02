@@ -15,7 +15,7 @@ return {
           ['lua'] = 'lua ' .. filename,
           ['c'] = 'g++ ' .. filename .. ' -o out && ./out',
           ['cpp'] = 'g++ ' .. filename .. ' -o out && ./out',
-          ['p8'] = '/home/rodrigo/apps/pico-8/pico8 -run ' .. filename,
+          ['p8'] = 'pico8 -run ' .. filename,
         }
 
         if commands[extension] then
