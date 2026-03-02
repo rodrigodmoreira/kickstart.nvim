@@ -890,9 +890,22 @@ require('lazy').setup({
     build = ':TSUpdate',
     branch = 'main',
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
+    opts = {
+      ensure_installed = {
+        'bash', 'c', 'diff', 'html', 'lua',
+        'luadoc', 'markdown', 'markdown_inline',
+        'query', 'vim', 'vimdoc'
+      },
+      -- temp fix out of mem/looping parser building
+      sync_install = true,
+      auto_install = false,
+      highlight = { enable = true },
+      indent = { enable = true },
+    },
     config = function()
-      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
-      require('nvim-treesitter').install(parsers)
+      -- local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      -- require('nvim-treesitter').install(parsers)
+
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
           local buf, filetype = args.buf, args.match
