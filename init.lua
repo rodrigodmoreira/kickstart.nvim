@@ -658,6 +658,30 @@ require('lazy').setup({
             Lua = {},
           },
         },
+
+        -- bun lsp server
+        vtsls = {
+          settings = {
+            typescript = {
+              tsserver = {
+                -- Plugin para o Bun reconhecer arquivos .ts/.js corretamente como Bun
+                pluginPaths = { "./node_modules" },
+              },
+              -- Habilita sugestões de importação automática
+              suggest = {
+                completeFunctionCalls = true,
+              },
+            },
+            javascript = {
+              suggest = {
+                completeFunctionCalls = true,
+              },
+            },
+          },
+          -- Opcional: Se quiser que o vtsls rode via Bun para ser mais rápido
+          -- (Certifique-se de que o bun está no seu PATH)
+          cmd = { "bun", "x", "@vtsls/language-server", "--stdio" },
+        },
       }
 
       -- Ensure the servers and tools above are installed
